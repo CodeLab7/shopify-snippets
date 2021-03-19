@@ -1,0 +1,144 @@
+<style type="text/css">
+/*---------------
+Accordian 
+---------------*/
+.accordion-container{  position: relative; height: auto;  margin: 10px auto 20px; padding:0px 5px;}
+.accordion-container  .set{  position: relative;  width: 100%;  height: auto;  background-color: #f5f5f5;}
+.accordion-container .set > a{  display: block;  padding: 10px 15px;  text-decoration: none;  color: #000;  font-weight: bold; 
+  text-transform:uppercase;
+    -webkit-transition:all 0.2s linear;
+    -moz-transition:all 0.2s linear;
+    transition:all 0.2s linear;
+    margin-bottom: 5px;
+  }
+.accordion-container  .set > a i{  float: right; margin-top: 0px; font-size: 24px; line-height: 24px; font-style: initial;}
+.accordion-container  .set > a.active{  background-color:#004972;  color: #fff;}
+.accordion-container  .content{background-color: #fff;  border: 1px solid #ddd;  display:none; padding:10px;margin-bottom: 10px; margin-top: -5px;}
+.accordion-container  .faqonpage{padding:10px 0;}
+.accordion-container  .faqonpage   li:first-child{font-weight:bold;}
+  
+</style>
+
+<!--Arcodian-->
+      <div class="accordion-container">
+        <div class="set">
+          <a href="#">Product Description <i>+</i></a>
+          <div class="content">{{ product.description }}</div>
+        </div>
+
+        {% if section.settings.accordian2_title != blank and section.settings.accordian2_enable == true and section.settings.accordian2_content != blank %}
+        <div class="set">
+          <a href="#">{{ section.settings.accordian2_title }} <i>+</i></a>
+          <div class="content">
+            {{ section.settings.accordian2_content }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if section.settings.accordian3_title != blank and section.settings.accordian3_enable == true and section.settings.accordian3_content != blank %}
+        <div class="set">
+          <a href="#">{{ section.settings.accordian3_title }} <i>+</i></a>
+          <div class="content">
+            {{ section.settings.accordian3_content }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if section.settings.accordian4_title != blank and section.settings.accordian4_enable == true and section.settings.accordian4_content != blank %}
+        <div class="set">
+          <a href="#">{{ section.settings.accordian4_title }} <i>+</i></a>
+          <div class="content">
+            {{ section.settings.accordian4_content }}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <!--End of Arcodian-->
+      
+<script type="text/javascript">
+   $(document).ready(function() {
+    $(".accordion-container .set > a").on("click", function() {
+      if ($(this).hasClass("active")) {
+        $(this).removeClass("active");
+        $(this).siblings(".content").slideUp(200);
+        $(".set > a i").text('+');
+      } else {
+        $(".set > a i").text('+');
+        $(this).find("i").text('-');
+        $(".set > a").removeClass("active");
+        $(this).addClass("active");
+        $(".content").slideUp(200);
+        $(this).siblings(".content").slideDown(200);
+      }
+    });
+  });
+</script>      
+
+{% schema %}
+{
+  "name": "Product Accordion",
+  "settings": [
+  {
+		"type": "header",
+		"content": "Accordion Tab 2",
+		"info": "Shows after Description Tab"
+	},
+	{
+		"type": "checkbox",
+		"id": "accordian2_enable",
+		"label": "Enable"
+	},
+	{
+		"type": "text",
+		"id": "accordian2_title",
+		"label": "Heading",
+		"default": "DELIVERY AND RETURNS"
+	},
+	{
+		"type": "richtext",
+		"id": "accordian2_content",
+		"label": "Text"
+	},
+	{
+		"type": "header",
+		"content": "Accordion Tab 3"
+	},
+	{
+		"type": "checkbox",
+		"id": "accordian3_enable",
+		"label": "Enable"
+	},
+	{
+		"type": "text",
+		"id": "accordian3_title",
+		"label": "Heading",
+		"default": "WHY BUY FROM US"
+	},
+	{
+		"type": "richtext",
+		"id": "accordian3_content",
+		"label": "Text"
+	},
+	{
+		"type": "header",
+		"content": "Accordion 4"
+	},
+	{
+		"type": "checkbox",
+		"id": "accordian4_enable",
+		"label": "Enable"
+	},
+	{
+		"type": "text",
+		"id": "accordian4_title",
+		"label": "Heading",
+		"default": "Faq"
+	},
+	{
+		"type": "richtext",
+		"id": "accordian4_content",
+		"label": "Text"
+	}
+  ]
+  {% endschema %}
+      
