@@ -1,0 +1,29 @@
+.product-form__controls-group{display:none;}
+.variant__label[for] {display: block;margin-bottom: 10px;cursor: default;font-size: x-large;font-weight: bolder;}
+.variant-input-wrap {border: 0;padding: 0;margin: 0 0 20px;position: relative;display:flex;flex-wrap: wrap;}
+.product-form input{min-height:0;}
+fieldset .variant-input {margin-right: 15px;}
+.variant-input-wrap input {clip: rect(0, 0, 0, 0);overflow: hidden;position: absolute;height: 1px;width: 1px;}
+[name="Color"] .variant-input label {height: 50px;width: 50px;line-height: 38px;padding: 6px 2px 7px;}
+[data-center-text="true"] .variant-input-wrap label {margin: 0 4px 12px;}
+.variant-input-wrap label {position: relative;display: inline-block;font-weight: 400;padding: 7px 15px 7px;margin: 0 8px 12px 0;
+  background-color: #ffffff;box-shadow: 0 0 0 1px #e8e8e1;}
+.variant-input-wrap input[type="radio"]:checked + label {box-shadow: 0 0 0 2px #000000;box-shadow: 0 0 0 2px #000;}
+.swatch .header {color: #000;font-size: 20px;flex-basis: 100%;}
+.swatch-element .crossed-out {display: none;}
+.swatch.clearfix{display: flex;flex-wrap: wrap;}
+.product-form .swatch .swatchInput {display: none;}
+.product-form .swatch .swatchInput:checked + .swatchLbl {border: 1px solid #aaa;box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);}
+.product-form .swatch .swatchInput + .swatchLbl.color {width: 26px;padding: 0;height: 26px;}
+.product-form .color .swatchInput:checked + .swatchLbl {border: 1px solid #000 !important;box-shadow: none !important;}
+.product-form .swatch .swatchInput + .swatchLbl {color: #333;font-size: 12px;font-weight: 400;text-transform: capitalize;
+  display: inline-block;margin: 0;line-height: 27px;height: 28px;background-color: #f9f9f9;border-radius: 4px;overflow: hidden;text-align: center;
+  -ms-transition: all 0.5s ease-in-out;  -webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;padding: 0 10px;border: 1px solid #eee;}
+.product-form .color .swatchInput + .swatchLbl {border-radius: none !important;width: 32px !important;height: 32px !important;
+  box-shadow: none !important;display: flex !important;flex-flow: row nowrap;justify-content: center;align-items: center;border: none !important;}
+.swatch-element .tooltip {display:none;}
+.swatch .swatch-element {padding: 5px;}
+.product-form .NonColor .swatchInput:checked + .swatchLbl {background: #423f3f;color: #fff;box-shadow: none;border: 1px solid #000;}
+.product-form .swatch .swatchInput + .swatchLbl {color: #333;font-size: 12px;font-weight: 400;text-transform: capitalize;min-width:36px;
+  display: inline-block;margin: 0;line-height: 29px;height: 28px;background-color: #f9f9f9;border-radius: 4px;overflow: hidden;text-align: center;
+  -ms-transition: all 0.5s ease-in-out;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;padding: 0 10px;border: 1px solid #eee;}

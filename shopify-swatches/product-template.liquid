@@ -1,0 +1,36 @@
+
+<!--Include swatch snippet-->
+{% if product.available and product.variants.size > 1 %}
+    {% render 'swatch' for product.options as swatch %}
+{% endif %}
+
+<script type="text/javascript">
+	(function($) {
+    $.fn.triggerNative = function(eventName) {
+        return this.each(function() {
+            var el = $(this).get(0);
+            triggerNativeEvent(el, eventName);
+        });
+    };
+
+    function triggerNativeEvent(el, eventName){
+      if (el.fireEvent) { // < IE9
+        (el.fireEvent('on' + eventName));
+      } else {
+        var evt = document.createEvent('Events');
+        evt.initEvent(eventName, true, false);
+        el.dispatchEvent(evt);
+      }
+}
+
+}(jQuery));
+ 
+(function($){
+	$('.swatch :radio').change(function() {
+    let optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+    let optionValue = jQuery(this).val();
+    let $variantDropdownSelector = $(this).closest('form').find('.single-option-selector').eq(optionIndex);
+    variantDropdownSelector.val(optionValue).triggerNative('change');    
+  });
+})(jQuery);
+</script>
