@@ -30,7 +30,7 @@
     let optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
     let optionValue = jQuery(this).val();
     let $variantDropdownSelector = $(this).closest('form').find('.single-option-selector').eq(optionIndex);
-    variantDropdownSelector.val(optionValue).triggerNative('change');    
+    $variantDropdownSelector.val(optionValue).triggerNative('change');    
   });
 })(jQuery);
 </script>
