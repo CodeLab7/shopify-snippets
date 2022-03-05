@@ -1,0 +1,16 @@
+<div class="cart-top-button">
+      {%- if additional_checkout_buttons -%}
+      <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+      {%- endif -%}
+      
+      <div class="cart__submit-controls">
+        {%- unless section.settings.cart_ajax_enable -%}
+        <input type="submit" name="update"
+               class="cart__submit btn btn--secondary"
+               value="{{ 'cart.general.update' | t }}">
+        {%- endunless -%}
+        <input type="submit" name="checkout"
+               class="cart__submit btn btn--small-wide"
+               value="{{ 'cart.general.checkout' | t }}">
+      </div>
+    </div>

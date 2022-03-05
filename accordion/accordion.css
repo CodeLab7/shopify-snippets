@@ -1,0 +1,43 @@
+.accordion-container {
+	position: relative;
+	height: auto;
+	margin: 10px auto 20px;
+	padding: 0 5px;
+}
+.accordion-container .set {
+	position: relative;
+	width: 100%;
+	height: auto;
+	background-color: #f5f5f5;
+}
+.accordion-container .set > a {
+	display: block;
+	padding: 10px 15px;
+	text-decoration: none;
+	color: #000;
+	font-weight: 700;
+	text-transform: uppercase;
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
+	margin-bottom: 5px;
+}
+.accordion-container .set > a.active {
+	background-color: #004972;
+	color: #fff;
+}
+.accordion-container .set > a i {
+	float: right;
+	margin-top: 0;
+	font-size: 24px;
+	line-height: 24px;
+	font-style: initial;
+}
+.accordion-container .content {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	display: none;
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-top: -5px;
+}

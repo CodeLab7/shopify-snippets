@@ -1,0 +1,38 @@
+
+<ul class="grid grid--uniform">
+    {% if section.settings.infinite_scroll %}
+      <div id="AjaxinateLoop" >
+    {% endif %}
+    {% for product in collection.products %}
+      <li class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+        {% include 'product-card-grid', max_height: max_height %}
+      </li>
+    {% endfor %}
+    {% if section.settings.infinite_scroll %}
+      </div>  
+    {% endif %}
+  </ul>
+  
+  {% if paginate.pages > 1 and section.settings.infinite_scroll == false %}
+    {% include 'pagination' %}
+  {% endif %}
+  
+  {% if section.settings.infinite_scroll %}
+    <div id="AjaxinatePagination" class="paginate-loading text-center">
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}">Load More</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  
+  
+  {% schema %}
+     {
+        "type": "checkbox",
+        "id": "infinite_scroll",
+        "label": "Enable infinite scroll",
+        "default": false
+      }
+  
+  {% endschema %}
