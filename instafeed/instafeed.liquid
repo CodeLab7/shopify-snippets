@@ -1,8 +1,4 @@
 
-<div class="insta-feed">
-  {% include 'instafeed' %}
-</div>
-
 <div class="section-header">
   {% if section.settings.heading != blank %}
   	<h2 class="insta_title text-center">{{ section.settings.heading }}</h2>
@@ -13,7 +9,14 @@
 
 <div id="myInstafeed" class="instafeed_custom grid grid--view-items"></div>
 
+<div id="instafeed"></div>
 
+<script type="text/javascript">
+    var feed = new Instafeed({
+      accessToken: 'your-token'
+    });
+    feed.run();
+</script>
 
 {% schema %}
   {

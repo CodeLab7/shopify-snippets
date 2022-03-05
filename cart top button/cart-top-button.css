@@ -1,4 +1,9 @@
-.cart-top-button {display: flex;flex-wrap: wrap;justify-content: flex-end;margin-bottom: 10px;}
+.cart-top-button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
 
 .cart-top-button .additional-checkout-buttons {
  margin-right:15px;
@@ -28,9 +33,15 @@
 
 
 @media only screen and (max-width: 1199px){
-  .cart-top-button .additional-checkout-buttons ul li {max-width: 200px !important;flex-basis: 200px !important;}
+  .cart-top-button .additional-checkout-buttons ul li {
+    max-width: 200px !important;
+    flex-basis: 200px !important;
+  }
   
 }
 @media only screen and (max-width: 991px){
-  .cart-top-button .additional-checkout-buttons ul li {max-width: 150px !important;flex-basis: 150px !important;}
+  .cart-top-button .additional-checkout-buttons ul li {
+    max-width: 150px !important;
+    flex-basis: 150px !important;
+  }
 }

@@ -1,3 +1,10 @@
-## Follow the instructions below For Bring the price to the top in Mobile size
+# Product Template Mobile View Product Title and Price is Top
 
-copy code from <b>mobile_top-title-and-price.liquid</b> and paste code in to your <b>product.liquid</b> file.
+## Getting Started
+Follow the instructions below For Bring the price to the top in Mobile size
+
+- code copy **mobile-title-and-price.liquid**.
+- Open **product-template.liquid** section.
+- code paste **featured_media** image before the start.
+
+> Note : `Desktop to hide is mobile-top-title-and-price`

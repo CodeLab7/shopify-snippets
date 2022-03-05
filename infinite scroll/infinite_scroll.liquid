@@ -1,4 +1,3 @@
-
 <ul class="grid grid--uniform">
     {% if section.settings.infinite_scroll %}
       <div id="AjaxinateLoop" >
@@ -25,6 +24,28 @@
     </div>
   {% endif %}
 
+{% comment %}
+    Initialize it in your script file or inline
+{% endcomment %}
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+      var endlessScroll = new Ajaxinate();
+    });
+</script>
+
+{% comment %}
+    If you wish to change the names of the selectors you can pass them in with the following settings.
+    For example:
+{% endcomment %}
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    var endlessScroll = new Ajaxinate({
+      container: '#AjaxinateLoop',
+      pagination: '#AjaxinatePagination',
+      loadingText: '<img src="{{ 'ajax-loader.gif' | asset_url }}">'
+    });
+  });
+</script>
   
   
   {% schema %}

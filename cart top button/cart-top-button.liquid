@@ -4,11 +4,6 @@
       {%- endif -%}
       
       <div class="cart__submit-controls">
-        {%- unless section.settings.cart_ajax_enable -%}
-        <input type="submit" name="update"
-               class="cart__submit btn btn--secondary"
-               value="{{ 'cart.general.update' | t }}">
-        {%- endunless -%}
         <input type="submit" name="checkout"
                class="cart__submit btn btn--small-wide"
                value="{{ 'cart.general.checkout' | t }}">

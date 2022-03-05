@@ -1,14 +1,19 @@
-# Create a Snippets
+# WhatsApp Message from Shopify
 
-Whatsapp_Widget.liquid
-icon-whatsapp.liquid
+## Getting Started
 
+- create a snippet with name icon-whatsapp.liquid add **SVG** icon.
+- Open **theme.liquid** file.
+- copy code from **whatsapp.liquid** file.
+- code paste **theme.liquid** file before the closing body tag.
+- Copy **CSS** code from your CSS file
 
-# Create Assets
+For example:
 
-whatsapp.css
+<code>>_liquid</code>
 
-## Follow the steps below
-Insert Whatsapp_Widget.liquid snippets wherever you want to show WhatsApp functionality
-
-
+    <div class="whatsapp_chat_widget">
+        <a href="https://api.whatsapp.com/send?phone=your_number&text=" target="_blank">
+        {% include 'icon-whatsapp' %}
+        </a>
+    </div>

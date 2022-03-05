@@ -1,5 +1,10 @@
-##  Follow the instructions below For Shopify 2.0 form
+# Login Template Shopify 2.0
+### Shopify 2.0 Login and Register Form
 
-create a <b>2.0-log_in_form.liquid</b> snippet,
-copy code from <b>2.0-log_in_form.liquid</b> and paste code in to that file.
-Call this snippet wherever you want to show the form.
+## Features
+- Login and Register Form is one template show
+
+## Getting Started
+- open customer-login template
+- **2.0-log_in_form.liquid** file code copy.
+- paste code in file customer-login template.

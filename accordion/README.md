@@ -1,5 +1,12 @@
-## Follow the instructions below For accordion 
+# Prodcut Template Accprdion 
 
-copy code from <b>accordion.liquid</b> and paste in to <u>accordion section file</u>.
-copy css from <b>accordion.css</b> and paste in to <b>theme.css</b> file.
-copy jQuery from <b>accordion.js</b> and paste in to your <b>custom.js</b> file.
+## Follow the steps to get accordion.
+- create a snippet with name **accordion.liquid** 
+- copy the file content from **accordion.liquid** from current git directory.
+- Open **product-template.liquid**
+- Open **product-template section** add liquid schema 
+- copy the file content from **schema is accordion.liquid** from current git directory.
+- Call this snippet wherever you want to show the accordion.
+- Copy **CSS** code from to your CSS file
+- Copy **JS** code from to your JS file
+
