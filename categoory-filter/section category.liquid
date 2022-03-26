@@ -1,0 +1,64 @@
+<div class="category-section category-info">
+  <div class="container">
+    
+    {% capture category_all %}
+      {% for block in section.blocks %}
+        {{ block.settings.category | strip }}
+      {% endfor %}
+    {% endcapture %}
+    {% assign category_array = category_all | split: ' ' | uniq %}
+    
+    {% for category in category_array %}
+      {% assign name = category | replace: '-', ' ' | capitalize %}
+      <h4>{{ name }}</h4>
+        {% for block in section.blocks %}
+          {% if name == block.settings.category %}
+            <p>{{ block.settings.text }}</p>
+          {% endif %}
+        {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+<style>
+.category-info h4 {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.category-info p {
+  margin-bottom: 0;
+}
+
+</style>
+  
+{% schema %}
+  {
+    "name": "Category info",
+    "settings": [
+  ],
+  "blocks": [
+     {
+       "name": "Block",
+       "type": "block",
+       "settings": [
+          {
+            "type": "text",
+            "id": "category",
+            "label": "Category"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          }
+       ]
+     }
+   ],
+  "presets": [
+      {
+        "name": "Category Info",
+        "category": "Text"
+      }
+  ]
+  }
+{% endschema %}
+
