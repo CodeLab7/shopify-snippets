@@ -12,8 +12,10 @@ For example:
 
 <code>>_liquid</code>
 
-    <div class="whatsapp_chat_widget">
+```html
+ <div class="whatsapp_chat_widget">
         <a href="https://api.whatsapp.com/send?phone=your_number&text=" target="_blank">
         {% include 'icon-whatsapp' %}
         </a>
     </div>
+```

@@ -1,6 +1,16 @@
+<style>
+  .category-info h4 {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .category-info p {
+    margin-bottom: 0;
+  }
+</style>
+
+
 <div class="category-section category-info">
   <div class="container">
-    
     {% capture category_all %}
       {% for block in section.blocks %}
         {{ block.settings.category | strip }}
@@ -19,16 +29,7 @@
     {% endfor %}
   </div>
 </div>
-<style>
-.category-info h4 {
-  margin-top: 10px;
-  margin-bottom: 0;
-}
-.category-info p {
-  margin-bottom: 0;
-}
 
-</style>
   
 {% schema %}
   {
@@ -61,4 +62,3 @@
   ]
   }
 {% endschema %}
-

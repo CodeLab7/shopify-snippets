@@ -10,8 +10,8 @@ Add Category is Repeater Field same Category name add Date Multiple
 
 For example:
 
-<code>>_liquid</code>
 
+```liquid Liquid
     {% capture category_all %}
       {% for block in section.blocks %}
         {{ block.settings.category | strip }}
@@ -28,9 +28,8 @@ For example:
           {% endif %}
         {% endfor %}
     {% endfor %}
-
-<code>>_Schema</code>
-
+```
+```JSON JSON
     {% schema %}
     {
     "name": "Category info",
@@ -62,3 +61,4 @@ For example:
     ]
     }
     {% endschema %}
+```
