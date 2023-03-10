@@ -1,0 +1,30 @@
+{% comment %}
+	savings price is show cart page
+{% endcomment %}
+{% assign savings_amount = 0 %}
+{% for item in cart.items %}
+  {% assign compareAtPrice = item.variant.compare_at_price | times: item.quantity %}
+  {% assign finalPrice = item.final_line_price %}
+
+  {% if compareAtPrice > finalPrice %}
+      {% assign finalPriceDifference = compareAtPrice | minus: finalPrice %}
+      {% assign savings_amount = savings_amount | plus: finalPriceDifference | times: 35 %}
+      {% assign savings_amount = savings_amount | money_without_currency | round %}
+  {% endif %}
+{% endfor %}
+
+{% comment %}
+	All orders savings price is show Account page
+{% endcomment %}
+{% assign member_savings = 0 %}
+{% for order in customer.orders %}
+    {% for item in order.line_items %}
+	    {% assign compareAtPrice = item.variant.compare_at_price | times: item.quantity %}
+        {% assign finalPrice = item.final_line_price %}
+
+        {% if compareAtPrice > finalPrice %}
+            {% assign finalPriceDifference = compareAtPrice | minus: finalPrice %}
+            {% assign member_savings = member_savings | plus: finalPriceDifference %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}

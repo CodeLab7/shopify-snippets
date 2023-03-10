@@ -2,7 +2,7 @@
       var endlessScroll = new Ajaxinate({
         container: '#AjaxinateLoop',
         pagination: '#AjaxinatePagination',
-        loadingText: '<img src="{{ 'ajax-loader.gif' | asset_url }}">'
+        loadingText: `<img src="{{ 'ajax-loader.gif' | asset_url }}">`
       });
     });
 

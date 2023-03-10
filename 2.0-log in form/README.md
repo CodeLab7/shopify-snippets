@@ -6,5 +6,5 @@
 
 ## Getting Started
 - open customer-login template
-- **2.0-log_in_form.liquid** file code copy.
+- `2.0-log_in_form.liquid` file code copy.
 - paste code in file customer-login template.
