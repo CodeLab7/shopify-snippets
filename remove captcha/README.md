@@ -3,7 +3,7 @@
 ## Getting Started
 
 - Create Customer Form submit and Remove Captcha
-  add script
+  Add script to remove captcha validation
  
 
 

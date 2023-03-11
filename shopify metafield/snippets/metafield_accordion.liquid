@@ -1,0 +1,20 @@
+<div>
+    {% for metafield in product.metafields.prdct_desc_component %}
+      {% assign product_tab_key = metafield | first | append: '_order' %}
+      <div data-position="{{ product.metafields.product_desc_order[product_tab_key] }}">
+        <div onclick="RevealMetadataCollection( this )">
+          <p>{{ metafield | first | replace: '_', ' ' | capitalize }}</p>
+          <div>
+            <div>
+                {% include 'icon-chevron-down' %}
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+              <p>{{ metafield | last }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>

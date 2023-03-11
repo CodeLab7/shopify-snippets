@@ -1,4 +1,4 @@
-# Prodcut Template Accprdion 
+# Product Template Accordion 
 
 ## Follow the steps to get accordion.
 - create a snippet with name `accordion.liquid`

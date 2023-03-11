@@ -1,4 +1,4 @@
- $(document).ready(function () {
+ jQuery(document).ready(function ($) {
 
 /* ============================= upload image ============================= */
     /* Todo: Add file list

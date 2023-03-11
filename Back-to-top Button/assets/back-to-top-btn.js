@@ -1,4 +1,4 @@
-$(document).ready(function(){
+jQuery(document).ready(function($){
     $(window).scroll(function(){
       if ($(this).scrollTop() > 300){
         $('.scroll_top').fadeIn(1000);
