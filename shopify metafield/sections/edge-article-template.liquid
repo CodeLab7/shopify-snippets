@@ -1,0 +1,27 @@
+<div>
+	{% assign blog_handles = article.metafields.blog_post.trending_slider | split: ',' %}
+	{% for handles in blog_handles %}
+		{% assign metafield_handle = handles | strip %}
+		{% assign article = articles[metafield_handle] %}
+		{% if article.handle contains metafield_handle %}
+			<div>
+				<a href="{{ article.url }}">
+					<div>
+						<img src="{{ article.image | img_url: '500x500' }}" alt="{{ article.title }}"/>
+					</div>
+					<div>
+						{{ article.title }}
+					</div>
+					<div>
+						{% if article.excerpt != blank %}
+							{{ article.excerpt | truncate: 100, "..." }}
+						{% else %}
+							{{ article.content | strip_html | truncate: 100, "..." }}
+						{% endif %}
+					</div>
+				</a>
+			</div>
+		{% endif %}
+
+	{% endfor %}
+</div>

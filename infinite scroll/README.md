@@ -39,26 +39,11 @@ Setup your collection or blog template,for example:
 
 Initialize it in your script file or inline
 
-<code>>_javascript</code>
-
-    document.addEventListener("DOMContentLoaded", function() {
-        var endlessScroll = new Ajaxinate();
-    });
 
 ## Settings
 
 If you wish to change the names of the selectors you can pass them in with the following settings.
 
-For example:
-
-<code>>_javascript</code>
-
-    document.addEventListener("DOMContentLoaded", function() {
-        var endlessScroll = new Ajaxinate({
-            container: '#AjaxinateLoop',
-            pagination: '#AjaxinatePagination'
-        });
-    });
 
 | Option | Default | Type | Description 
 | ------ | ------ |  ------ | ------ |

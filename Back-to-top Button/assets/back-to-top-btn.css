@@ -1,0 +1,11 @@
+.scrollToTop {background-color: #3bb77e;color: #ffffff;}
+.scrollToTop:hover,
+.scrollToTop:focus {color: #ffffff !important;background-color: #3bb77e;}
+.scroll_top {display: none;}
+.scrollToTop {width: 40px;height: 40px;position: fixed;z-index: 9999;right: 20px;bottom: 80px;text-align: center;display: flex;justify-content: center;align-items: center;border-radius: 5px;}
+.scrollToTop
+.icon.icon-chevron-down {-webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);width: 15px;height: 15px;}
