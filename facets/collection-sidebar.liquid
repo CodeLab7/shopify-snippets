@@ -1,0 +1,93 @@
+{%- liquid
+	assign sort_by = results.sort_by | default: results.default_sort_by
+	assign total_active_values = 0
+	if results.url
+		assign results_url = results.url
+	else
+		assign terms = results.terms | escape
+		assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+	endif
+-%}
+
+<div class="collection-sidebar" data-id="{{ section.id }}">
+	<aside data-id="{{ section.id }}">
+		<facet-filters-form>
+			<form id="FacetFiltersForm">
+				<div class="active-facets">
+					<facet-remove>
+						<a href="{{ results_url }}" class="active-facets__button-remove">
+							<span>Clear All</span>
+						</a>
+					</facet-remove>
+					{%- for filter in collection.filters -%}
+						{%- for value in filter.active_values -%}
+							<facet-remove>
+								<a href="{{ value.url_to_remove }}">
+									<span>
+										{{ filter.label }}: {{ value.label | escape }}
+									</span>
+								</a>
+							</facet-remove>
+						{%- endfor -%}
+						{%- if filter.type == "price_range" -%}
+							{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+								<facet-remove>
+									<a href="{{ filter.url_to_remove }}">
+										{%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
+									</a>
+								</facet-remove>
+							{%- endif -%}
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+				{%- assign uses_comma_decimals = false -%}
+				{%- for filter in collection.filters -%}
+					<div id="Details-{{ forloop.index }}-{{ section.id }}" data-index="{{ forloop.index }}">
+						{%- case filter.type -%}
+							{%- when 'price_range' -%}
+								<div id="Facet-{{ forloop.index }}-{{ section.id }}">
+									<h5>{{ filter.label }}</h5>
+									<ul>
+										<li>
+											<span>{{ cart.currency.symbol }}</span>
+											<label for="Filter-{{ filter.label | escape }}-GTE">From</label>
+											<input name="{{ filter.min_value.param_name }}" id="Filter-{{ filter.label | escape }}-GTE" type="number" placeholder="0" min="0"
+												{%- if filter.min_value.value -%}
+													{%- if uses_comma_decimals -%}
+														value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+													{%- else -%}
+														value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+													{%- endif -%}
+												{%- endif -%}
+											{%- if uses_comma_decimals -%}max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+												{%- else -%}max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"{%- endif -%}>
+										</li>
+										<li>
+											<span>{{ cart.currency.symbol }}</span>
+											<label for="Filter-{{ filter.label | escape }}-LTE">To</label>
+											<input name="{{ filter.max_value.param_name }}" id="Filter-{{ filter.label | escape }}-LTE" type="number" {%- if filter.max_value.value -%} {%- if uses_comma_decimals -%}value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}" {%- else -%}value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}" {%- endif -%} {%- endif -%} {%- if uses_comma_decimals -%} placeholder="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}" max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"  {%- else -%} placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"  {%- endif -%} min="0" max="1000.00">
+										</li>
+									</ul>
+								</div>
+							{%- when 'boolean' or 'list' -%}
+								<div id="Facet-{{ forloop.index }}-{{ section.id }}">
+									<h5>{{ filter.label }}</h5>
+									<ul class=" {{ filter.label | downcase | handleize }}-filter">
+										{%- for value in filter.values -%}
+											<li class="filter{% if forloop.index > 10 %} show-more-item hidden{% endif %}">
+												<label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}"  class="{{ filter.label | downcase | handleize }}-filter-checkbox {% if value.count == 0 and value.active == false %}facet-checkbox--disabled{% endif %}">
+													<input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}> {{ value.label | escape }} ({{ value.count }})
+												</label>
+											</li>
+										{%- endfor -%}
+									</ul>
+								</div>
+						{%- endcase -%}
+					</div>
+				{%- endfor -%}
+			</form>
+		</facet-filters-form>
+	</aside>
+	<span id="ProductCountDesktop"></span>
+	<span id="ProductCount"></span>
+</div>
