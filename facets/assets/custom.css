@@ -1,0 +1,43 @@
+.hidden {
+    display: none !important;
+}
+#FacetFiltersForm h3 {
+    margin-top: 20px;
+}
+
+.active-facets-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.active-facets > facet-remove a > span {
+    padding: .5rem 1rem;
+    box-shadow: 0 0 0 .1rem rgba(18,18,18,.2);
+    border-radius: 2.6rem;
+}
+.active-facets__button {
+    display: block;
+    margin-right: 15px;
+    margin-top: 20px;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    text-decoration: none;
+}
+
+.active-facets .active-facets-filter:only-child > facet-remove {
+    display: none;
+}
+
+.collection__page_wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+
+.collection-sidebar
+{
+    width: 20%;
+}
+
