@@ -82,10 +82,6 @@ class VariantSelects extends HTMLElement {
             const input = productForm.querySelector('input[name="id"]');
             input.value = this.currentVariant.id;
             input.dispatchEvent(new Event('change', {bubbles: true}));
-            let btn_id = productForm.querySelector('button[data-id]');
-            if (btn_id) {
-                btn_id.setAttribute('data-id', input.value);
-            }
         });
     }
 
@@ -141,7 +137,7 @@ class VariantSelects extends HTMLElement {
         const productForm = document.querySelector(`form[data-productForm="productForm-${this.dataset.section}"]`);
         if (!productForm) return;
         const addButton = productForm.querySelector('[name="add"]');
-        const addButtonText = productForm.querySelector('[name="ad d"] > span');
+        const addButtonText = productForm.querySelector('[name="add"] > span');
         if (!addButton) return;
 
         if (disable) {
