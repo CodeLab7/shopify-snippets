@@ -1,7 +1,7 @@
 # Product variants custom element
 
 ### Get Started
-- Create a snippets with following names:
+- Create a snippets with following names under `snippets` directory:
 
 ```
  1. variant-option-selector.liquid
@@ -33,7 +33,7 @@ For example:
 ```
 
 - Add the id `id="price-{{ section.id }}"` to the parent div to change the Price
-- You have to compulsory add Attribute In form tag  `data-productForm="productForm-{{ section.id }}"` like below define
+- You have to compulsory add Attribute In form tag  `data-productForm` like below define
 
 For Example
 ```
