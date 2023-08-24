@@ -1,0 +1,149 @@
+.hidden {
+    display: none !important;
+}
+
+.facets {
+    display: block;
+}
+
+.active-facets-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+.active-facets__button {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 10px;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    box-shadow: 0 0 0 .1rem rgba(18,18,18,.2);
+    border-radius: 2.6rem;
+}
+
+.active-facets .active-facets-filter:only-child > facet-remove {
+    display: none;
+}
+
+.active-facets__button .icon-close {
+	width: 9px;
+	height: auto;
+	display: inline-block;
+	margin-left: 4px;
+}
+
+.collection__page_wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+#FacetFiltersForm > .js-filter,
+#FacetFiltersFormMobile > .js-filter {
+    padding-top: 25px;
+}
+
+.collection-sidebar {
+    width: 20%;
+}
+
+.button-facets {
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.close-wrapper {
+    display: none;
+}
+
+.collection-header .section-header {
+    margin-bottom: 15px;
+}
+
+.collection-sidebar.sidebar-mobile-view {
+    display: none;
+}
+.active-facets facet-remove:only-child,
+.large-up-hide {
+    display: none;
+}
+@media (min-width:768px) {
+    .facets-vertical {
+        display: flex;
+    }
+}
+
+@media (max-width:767px){
+    #Collection {
+        padding-top: 20px;
+        position: relative;
+    }
+
+    .collection__page_wrapper {
+        flex-wrap: wrap;
+    }
+
+    .collection-sidebar {
+        display: none;
+    }
+
+    .button-facets {
+        display: block;
+    }
+
+    .close-wrapper {
+        display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 99;
+        cursor: pointer;
+    }
+
+    #FacetFiltersForm,
+    #FacetFiltersFormMobile {
+        padding: 0 20px;
+        overflow: scroll;
+        height: 100%;
+        position: relative;
+        text-align: left !important;
+    }
+
+    .active-facets-filter facet-remove {
+        position: absolute;
+        left: 20%;
+    }
+
+    .collection-sidebar.sidebar-mobile-view {
+        display: block;
+        top: 0;
+        width: 40rem;
+        max-width: calc(100vw - 3rem);
+        position: fixed;
+        right: 100%;
+        background: #fff;
+        transition: all 0.3s ease-in;
+        z-index: 99;
+        transition: transform .2s ease;
+    }
+
+    .collection-sidebar.sidebar-mobile-view.drawer-open {
+        right: 0;
+        overflow: scroll;
+        height: 100%;
+        left: 0;
+        transform: translate(0);
+    }
+
+    .large-up-hide {
+        display: block;
+        margin-top: 15px;
+    }
+}

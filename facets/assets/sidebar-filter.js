@@ -42,11 +42,13 @@ class FacetFiltersForm extends HTMLElement {
         }
         window.addEventListener('popstate', onHistoryChange);
     }
+
     static toggleActiveFacets(disable = true) {
         document.querySelectorAll('.js-facet-remove').forEach((element) => {
             element.classList.toggle('disabled', disable);
         });
     }
+
     static renderPage(searchParams, event, updateURLHash = true) {
         FacetFiltersForm.searchParamsPrev = searchParams;
         const sections = FacetFiltersForm.getSections();
@@ -76,7 +78,7 @@ class FacetFiltersForm extends HTMLElement {
             .then(response => response.text())
             .then((responseText) => {
                 const html = responseText;
-                FacetFiltersForm.filterData = [...FacetFiltersForm.filterData, { html, url }];
+                FacetFiltersForm.filterData = [...FacetFiltersForm.filterData, {html, url}];
                 FacetFiltersForm.renderFilters(html, event);
                 FacetFiltersForm.renderProductGridContainer(html);
                 FacetFiltersForm.renderProductCount(html);
@@ -136,7 +138,7 @@ class FacetFiltersForm extends HTMLElement {
     }
 
     static renderActiveFacets(html) {
-        const activeFacetElementSelectors = ['.active-facets'];
+        const activeFacetElementSelectors = ['.active-facets-mobile', '.active-facets-desktop'];
 
         activeFacetElementSelectors.forEach((selector) => {
             const activeFacetsElement = html.querySelector(selector);
@@ -175,7 +177,7 @@ class FacetFiltersForm extends HTMLElement {
     }
 
     static updateURLHash(searchParams) {
-        history.pushState({ searchParams }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
+        history.pushState({searchParams}, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
     }
 
     static getSections() {
@@ -305,6 +307,7 @@ class ShowMoreButton extends HTMLElement {
             }
         });
     }
+
     expandShowMore(event) {
         const parentDisplay = event.target.closest('[id^="Show-More-"]').closest('.parent-display');
         const parentWrap = parentDisplay.querySelector('.parent-wrap');
@@ -315,9 +318,8 @@ class ShowMoreButton extends HTMLElement {
 
 customElements.define('show-more-button', ShowMoreButton);
 
-
-$(document).ready(function () {
-    $(".sort-dropdown-toggle").click(function () {
-        $(this).toggleClass("open");
-    });
-});
+document.querySelectorAll('.btn-drawer-wrapper').forEach(element => element.addEventListener('click', event => {
+    var mobileDrawer = document.querySelector(".collection-sidebar.sidebar-mobile-view");
+    mobileDrawer.classList.toggle("drawer-open");
+    document.querySelector('body').classList.toggle("overflow-hidden");
+}));

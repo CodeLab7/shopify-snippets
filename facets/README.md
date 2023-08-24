@@ -1,23 +1,33 @@
 # Product Filter
 
 
-## Getting Started
-- Create a snippet with name `collection-sidebar.liquid`
-- Copy the file content from `collection-sidebar.liquid` from current git directory.
-- Call this snippet wherever you want to show the product filter.
-- Copy **CSS** Code from custom.css file and paste to your **CSS** file.
-- Create assets with name `facets.js`
-- Copy the file content from `facets.js` from current git directory.
-- Call this assets into`theme.liquid` file.
-
-
-For example:
-
-```liquid
-    {% render 'collection-sidebar' %}
+### Getting Started
+- Create a snippets with following names:
+```liquid 
+   sortby-filter-desktop.liquid
+   desktop-sidebar-filter.liquid
+   mobile-sidebar-filter.liquid
 ```
+- Copy the file content from `desktop-sidebar-filter.liquid`, `mobile-sidebar-filter.liquid` and `sortby-filter-desktop.liquid` from current git directory.
+- Call this snippet wherever you want to show the product.
+
 For example:
+```liquid
+    {% render 'sortby-filter-desktop', collection: collection %} 
+    {% render 'desktop-sidebar-filter', results: collection %}
+    {% render 'mobile-sidebar-filter', results: collection %}
+```
 
-<code>>_liquid</code>
+- Create assets with following names:
+```liquid 
+   sidebar-filter.css 
+   sidebar-filter.js
+```
+- Copy the file content from `sidebar-filter.js` and `sidebar-filter.css` from current git directory.
+- Call this in `collection` section top of the code.
 
-    {{ 'facets.js' | asset_url | script_tag }}
+For Example:
+```liquid
+    {{ 'sidebar-filter.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'sidebar-filter.js' | asset_url }}" defer="defer"></script>
+```
