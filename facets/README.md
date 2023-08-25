@@ -1,33 +1,27 @@
 # Product Filter
 
+## About
+This snippet will help you show the Product filter as a vertical filter on Desktop screens and the Drawer filter on Mobile screens.
+## How to Use
 
-### Getting Started
-- Create a snippets with following names:
-```liquid 
-   sortby-filter-desktop.liquid
-   desktop-sidebar-filter.liquid
-   mobile-sidebar-filter.liquid
-```
-- Copy the file content from `desktop-sidebar-filter.liquid`, `mobile-sidebar-filter.liquid` and `sortby-filter-desktop.liquid` from current git directory.
-- Call this snippet wherever you want to show the product.
+1. There are 3 files in this folder that you have to put it in `snippets` directory:
+   - sortby-filter-desktop.liquid
+   - desktop-sidebar-filter.liquid
+   - mobile-sidebar-filter.liquid
 
-For example:
-```liquid
-    {% render 'sortby-filter-desktop', collection: collection %} 
-    {% render 'desktop-sidebar-filter', results: collection %}
-    {% render 'mobile-sidebar-filter', results: collection %}
-```
+2. After that you can call this snippet wherever you want to show this collection page and search page.
+    ```liquid
+        {% render 'sortby-filter-desktop', collection: collection %} 
+        {% render 'desktop-sidebar-filter', results: collection %}
+        {% render 'mobile-sidebar-filter', results: collection %}
+    ```
 
-- Create assets with following names:
-```liquid 
-   sidebar-filter.css 
-   sidebar-filter.js
-```
-- Copy the file content from `sidebar-filter.js` and `sidebar-filter.css` from current git directory.
-- Call this in `collection` section top of the code.
-
-For Example:
-```liquid
+3. You also 2 files move/merge the given  CSS and JS Files `sidebar-filter.css` and  `sidebar-filter.js` in the assets folder. Attach it with your theme either in `layout/theme.liquid` or wherever you are calling the given snippet
+    ```html
     {{ 'sidebar-filter.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'sidebar-filter.js' | asset_url }}" defer="defer"></script>
-```
+    ```
+4. You have to add the id `id="product-grid"` in the product items parent element and Grandparents add the id `id="ProductGridContainer"`.
+   - Like the below definition.
+ 
+   ![Image](assets/images/screenshot.png)
