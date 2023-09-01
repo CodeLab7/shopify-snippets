@@ -1,0 +1,53 @@
+.drawer.is-empty .free-shipping-bar
+{
+    order: -1;
+    padding: 0 15px;
+    margin-top: 25px;
+    position: absolute;
+    top: 0;
+}
+
+.cart-drawer__empty-content
+{
+    margin-top: 20px;
+}
+
+.drawer.is-empty .drawer__close
+{
+    top: 0;
+}
+
+.drawer .free-shipping-content
+{
+    margin: 0;
+    line-height: 1.2;
+}
+
+.drawer .shipping-progress-bar .shipping_progress_bar
+{
+    width: 100%;
+    height: 1.2rem;
+    text-align: center;
+    color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+}
+
+.cart-free-shipping-bar .hidden{
+    display: none;
+}
+
+.free-shipping-bar + cart-drawer-items
+{
+    margin-top: 15px;
+}
+
+@media (max-width: 475px)
+{
+    .drawer.is-empty .cart-free-shipping-bar
+    {
+        margin-top: 35px;
+    }
+}

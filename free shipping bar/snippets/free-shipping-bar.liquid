@@ -1,0 +1,43 @@
+{{ 'free-shipping-bar.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+    :root {
+    --progress-bar-bg-color: {{ settings.progress_bar_bg_color }};
+    --progress-bar-path-color: {{ settings.progress_bar_path_color }};
+    --progress-bar-path-color: {{ settings.progress_bar_path_color }};
+    }
+{% endstyle %}
+
+{% if settings.show_free_shipping_bar or section.settings.show_free_shipping_bar %}
+    <div class="free-shipping-bar">
+        <div class="cart-free-shipping-bar">
+        <div class="free-shipping-container">
+            {%- liquid
+                assign remain_purchase_price = 0
+                for item in cart.items
+                    assign item_id = item.product.id
+                    for product in settings.drawer_collection.products
+                        if item_id == product.id
+                            assign remain_purchase_price = remain_purchase_price | plus: item.final_line_price
+                        endif
+                    endfor
+                    for product in settings.drawer_product_list
+                        if item_id == product.id
+                            assign remain_purchase_price = remain_purchase_price | plus: item.final_line_price
+                        endif
+                    endfor
+                endfor
+                assign free_shipping_total = settings.free_shipping_total | times: 100
+                assign cart_final_price = cart.total_price | minus: remain_purchase_price
+                assign remain_free_shipping_price = free_shipping_total | minus: cart_final_price
+                assign progressbar_value = free_shipping_total | minus: remain_free_shipping_price
+            -%}
+            <p class="free-shipping-content {% if cart_final_price > free_shipping_total %}hidden{% endif %}">You are only {{ remain_free_shipping_price | money_with_currency }} away from free shipping</p>
+            <p class="free-shipping-content {% if cart_final_price < free_shipping_total %}hidden{% endif %}">{{ settings.success_message }}</p>
+            <div class="shipping-progress-bar">
+                <progress class="shipping_progress_bar" max="{{ free_shipping_total }}" value="{{ progressbar_value }}"></progress>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endif %}
