@@ -1,0 +1,103 @@
+.quick-cart-wrapper .product-info {
+    display: flex;
+}
+.quick-cart-wrapper .product-img {
+    max-width: 100px;
+    width: 60px;
+    object-fit: cover;
+}
+#quick-cart {
+    background: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.09);
+    z-index: 9;
+    transition: all .4s ease;
+    opacity: 0;
+    transform: translateY(100%);
+}
+.quick-cart-wrapper .hidden {
+    display: none;
+}
+.sticky-cart-wrapper #quick-cart {
+    opacity: 1;
+    transform: unset;
+}
+.sticky-cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.sticky-cart-container > div {
+    display: flex;
+    align-items: center;
+}
+.sticky-cart-container .product-info {
+    width: 30%;
+}
+.sticky-cart-container .product-form-control {
+    justify-content: flex-start;
+    width: 70%;
+}
+.sticky-cart-container .product-details-wrapper {
+    margin-left: 20px;
+}
+.sticky-cart-container .product-form-control > div:not(:last-child)  {
+    margin-right: 20px;
+}
+.select-variant {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+.select-variant svg {
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 10%;
+    height: 6px;
+}
+.sticky-cart-container .product-form__submit {
+    margin-bottom: 0;
+}
+#variant-select variant-selects {
+    display: flex;
+}
+.quick-cart-wrapper .product-form__input--dropdown {
+    margin-right: 20px;
+}
+.quick-cart-wrapper .product-form__input {
+    max-width: 10rem;
+    min-width: unset;
+    margin-bottom: 0;
+}
+.quick-cart-wrapper .product-form__input .form__label {
+    display: none;
+}
+
+@media(max-width: 1024px) {
+    .sticky-cart-container {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    .sticky-cart-container .product-info,
+    .sticky-cart-container .product-form-control {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .quick-cart-wrapper .product-form__input--dropdown {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 675px){
+    .sticky-cart-container .product-form-control {
+        flex-wrap: wrap;
+    }
+    .sticky-cart-container .product-form-control > div {
+        margin-bottom: 20px;
+    }
+}
