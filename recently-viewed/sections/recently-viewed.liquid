@@ -1,0 +1,96 @@
+<style>
+	.section-{{ section.id }}-padding {
+		padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+		padding-bottom: calc({{ section.settings.padding_bottom }}px * 0.75);
+	}
+	@media screen and (min-width: 750px) {
+		.section-{{ section.id }}-padding {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+    .cart__inner_image {
+        position: relative;
+        padding-bottom: 100%;
+    }
+    .cart__inner_image > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .recently-viewed-wrapper .cart__inner_image .motion-reduce {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+</style>
+
+<div class="section-{{ section.id }}-padding">
+    <div class="page-width">
+        <script>
+          window.Shopify.productData = {
+            productTitle: "{{ product.title }}",
+            productImg: "{{ product.featured_media | image_url: width: 533 }}",
+            imgWidth:"{{ product.featured_media.width }}",
+            imgHeight:"{{ product.featured_media.height }}",
+            productPrice: "{{ product.price | money_with_currency }}",
+            productUrl: "{{ product.url }}",
+            productImageAltText: "{{product.featured_media.alt | escape }}"
+          };
+        </script>
+        <h2 class="product-recommendations__heading h2">{{ section.settings.heading | escape }}</h2>
+        <div class="recently-viewed-wrapper">
+            <ul id="recently-viewed" class="recently-viewed grid product-grid grid--4-col-desktop grid--2-col-tablet-down" role="list">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="{{ 'recent-products.js' | asset_url }}" defer="defer"></script>
+
+
+{% schema %}
+{
+  "name": "Recent Products",
+  "class": "section recently-viewed-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Recently Viewed",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recent Products"
+    }
+  ]
+}
+{% endschema %}
