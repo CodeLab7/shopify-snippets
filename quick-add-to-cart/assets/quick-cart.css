@@ -1,0 +1,103 @@
+.quick-cart-wrapper .product-info {
+	display: flex;
+}
+.quick-cart-wrapper .product-img {
+	width: 60px;
+	max-width: 100px;
+	object-fit: cover;
+}
+#quick-cart {
+	position: fixed;
+	z-index: 9;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 10px;
+	transition: all .4s ease;
+	transform: translateY(100%);
+	opacity: 0;
+	background: #FFFFFF;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.09);
+}
+.quick-cart-wrapper .hidden {
+	display: none;
+}
+.sticky-cart-wrapper #quick-cart {
+	transform: unset;
+	opacity: 1;
+}
+.sticky-cart-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.sticky-cart-container > div {
+	display: flex;
+	align-items: center;
+}
+.sticky-cart-container .product-info {
+	width: 30%;
+}
+.sticky-cart-container .product-form-control {
+	justify-content: flex-start;
+	width: 70%;
+}
+.sticky-cart-container .product-details-wrapper {
+	margin-left: 20px;
+}
+.sticky-cart-container .product-form-control > div:not(:last-child) {
+	margin-right: 20px;
+}
+.select-variant {
+	position: relative;
+	display: flex;
+	width: 100%;
+}
+.select-variant svg {
+	position: absolute;
+	top: calc(50% - 1px);
+	right: 10%;
+	height: 6px;
+}
+.sticky-cart-container .product-form__submit {
+	margin-bottom: 0;
+}
+#variant-select variant-selects {
+	display: flex;
+}
+.quick-cart-wrapper .product-form__input--dropdown {
+	margin-right: 20px;
+}
+.quick-cart-wrapper .product-form__input {
+	min-width: unset;
+	max-width: 10rem;
+	margin-bottom: 0;
+}
+.quick-cart-wrapper .product-form__input .form__label {
+	display: none;
+}
+
+@media (max-width: 1024px) {
+	.sticky-cart-container {
+		flex-direction: column;
+		row-gap: 10px;
+	}
+	.sticky-cart-container .product-info,
+	.sticky-cart-container .product-form-control {
+		justify-content: flex-start;
+		width: 100%;
+	}
+	.quick-cart-wrapper .product-form__input--dropdown {
+		margin-right: 10px;
+	}
+}
+
+@media (max-width: 675px) {
+	.sticky-cart-container .product-form-control {
+		flex-wrap: wrap;
+	}
+	.sticky-cart-container .product-form-control > div {
+		margin-bottom: 20px;
+	}
+}
