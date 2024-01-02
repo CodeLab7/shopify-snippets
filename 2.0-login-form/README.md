@@ -1,13 +1,15 @@
-# Login Template Shopify 2.0
+## Login Template Shopify 2.0 (For: Dawn Theme)
+
 ### Shopify 2.0 Login and Register Form
 
 ## Features
-- Login and Register Form is one template show
 
-## Getting Started 
+- Show Login and Register Form in single Template.
+
+## How to use
+
 **Note**: This snippet has been created according to Dawn theme, If you use another theme, you have to take the css file according to that theme
 
-- open customer-login template.
-- `2.0-log_in_form.liquid` file code copy.
-- paste code in file customer-login template.
-- Place the `customer.css` file in the `assets` folder
+- Open customer-login template.
+- Copy code From `snippets/login_form.liquid` and paste into customer-login Template.
+- Add `customer.css` file into `assets` folder. _(Attachment code is already in `login_form.liquid` page)_
