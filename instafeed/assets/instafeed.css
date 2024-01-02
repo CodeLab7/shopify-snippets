@@ -1,4 +1,0 @@
-.insta-feed {padding-top: 40px;}
-#myInstafeed .product-card .product-card__image-wrapper {transition: all .4s linear;}
-#myInstafeed .product-card:hover .product-card__image-wrapper:before {content: ' ';opacity: 1;background: url({{ 'instagram.png' | asset_img_url: '50x' }}) no-repeat center center;background-size: auto;background-size: 20px 20px;position: absolute;z-index: 100;top: 0;left: 0;bottom: 0;right: 0;filter: invert(100%);}
-#myInstafeed .product-card:hover .product-card__image-wrapper:after {content: ' ';position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;opacity: .3;}
