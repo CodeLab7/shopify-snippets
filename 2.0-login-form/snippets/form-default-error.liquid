@@ -1,0 +1,6 @@
+<h2 class="form__message" tabindex="-1" autofocus>
+    <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
+    {% render 'icon-error' %}
+    {{ 'templates.contact.form.error_heading' | t }}
+</h2>
+{{ form.errors | default_errors }}

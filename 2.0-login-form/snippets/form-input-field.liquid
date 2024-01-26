@@ -1,0 +1,18 @@
+<div class="field">
+    <input
+            type="{{ type }}"
+            value=""
+            name="{{ name }}"
+            id="{{ id }}"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="{{ autocomplete }}"
+            {% if form.last_name %}value="{{ form.last_name }}" {% endif %}
+            {% if form.errors contains form %} aria-invalid="true" {% endif %}
+            {% if form.errors %} aria-invalid="true" aria-describedby="{{ aria_describedby }}" autofocus {% endif %}
+            placeholder="{{ placeholder | t }}"
+    >
+    <label for="{{ id }}">
+        {{ placeholder | t }}
+    </label>
+</div>
