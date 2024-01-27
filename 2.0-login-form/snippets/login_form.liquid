@@ -7,7 +7,7 @@
         {%- form 'recover_customer_password' -%}
             {% assign recover_success = form.posted_successfully? %}
 
-            {% render 'form-input-field', type: 'email', name: 'email' , id: 'RecoverEmail', placeholder: 'customer.login_page.email', aria_describedby: 'RecoverEmail-email-error' form: 'form', autocomplete: 'email' %}
+            {% render 'form-input-field', type: 'email', name: 'email' , id: 'RecoverEmail', placeholder: 'customer.login_page.email', aria_describedby: 'RecoverEmail-email-error', autocomplete: 'email', autofocus: 'autofocus' %}
             {%- if form.errors -%}
                 <small id="RecoverEmail-email-error" class="form__message">
                     {% render 'icon-error' %}
@@ -15,9 +15,7 @@
                 </small>
             {%- endif -%}
 
-            <button>
-                {{ 'customer.login_page.submit' | t }}
-            </button>
+            {% render 'form-button', button_title: 'customer.login_page.submit' %}
 
             <a href="#login">
                 {{ 'customer.login_page.cancel' | t }}
@@ -32,22 +30,19 @@
         {%- endif -%}
         {%- form 'customer_login', novalidate: 'novalidate' -%}
             {%- if form.errors -%}
-                {% render 'form-default-error' %}
+                {% render 'form-default-error', form: 'form' %}
             {%- endif -%}
 
-            {% render 'form-input-field', type: 'email', name: 'email' , id: 'CustomerEmail', placeholder: 'customer.login_page.email', aria_describedby: 'RecoverEmail-email-error' form: 'form', autocomplete: 'email' %}
+            {% render 'form-input-field', type: 'email', name: 'customer[email]' , id: 'CustomerEmail', placeholder: 'customer.login_page.email', form_title: 'form', autocomplete: 'email', form: 'form' %}
 
             {%- if form.password_needed -%}
-                {% render 'form-input-field', type: 'password', name: 'customer[password]', id: 'CustomerPassword', placeholder: 'customer.login_page.password', autocomplete: 'current-password' %}
+                {% render 'form-input-field', type: 'password', name: 'customer[password]', id: 'CustomerPassword', placeholder: 'customer.login_page.password', form_title: 'form', autocomplete: 'current-password', form: 'form' %}
 
                 <a href="#recover">
                     {{ 'customer.login_page.forgot_password' | t }}
-                </a>
-            {%- endif -%}
+                </a> {%- endif -%}
 
-            <button>
-                {{ 'customer.login_page.sign_in' | t }}
-            </button>
+            {% render 'form-button', button_title: 'customer.login_page.sign_in' %}
 
             <a href="{{ routes.account_register_url }}">
                 {{ 'customer.login_page.create_account' | t }}
@@ -72,7 +67,7 @@
     {% render 'customer-page-title', title: 'customer.register.title' %}
     {%- form 'create_customer', novalidate: 'novalidate' -%}
         {%- if form.errors -%}
-            {% render 'form-default-error' %}
+            {% render 'form-default-error', form: 'form' %}
             <ul>
                 {%- for field in form.errors -%}
                     <li>
@@ -89,23 +84,22 @@
             </ul>
         {%- endif -%}
 
-        {% render 'form-input-field', type: 'text', name: 'customer[first_name]', placeholder: 'customer.register.first_name', id: 'RegisterForm-FirstName', autocomplete: 'given-name' %}
+        {% render 'form-input-field', type: 'text', name: 'customer[first_name]', value: form.first_name, placeholder: 'customer.register.first_name', id: 'RegisterForm-FirstName', autocomplete: 'given-name', form: 'form' %}
 
-        {% render 'form-input-field', type: 'text', name: 'customer[last_name]', placeholder: 'customer.register.last_name', id: 'RegisterForm-LastName', autocomplete: 'family-name' %}
+        {% render 'form-input-field', type: 'text', name: 'customer[last_name]', value: form.last_name, placeholder: 'customer.register.last_name', id: 'RegisterForm-LastName', autocomplete: 'family-name', form: 'form' %}
 
-        {% render 'form-input-field', type: 'email', name: 'customer[email]', placeholder: 'customer.register.email', id: 'RegisterForm-email', aria_describedby: 'RegisterForm-email-error', autocomplete: 'email', form: 'email' %}
+        {% render 'form-input-field', type: 'email', name: 'customer[email]', placeholder: 'customer.register.email', id: 'RegisterForm-email', aria_describedby: 'RegisterForm-email-error', autocomplete: 'email', form_title: 'email', form: 'form', spellcheck: 'spellcheck="false"' %}
 
         {%- if form.errors contains 'email' -%}
-            {% render 'form-field-error', name: 'email', id: 'RegisterForm-email-error' %}
+            {% render 'form-field-error', form_title: 'email', id: 'RegisterForm-email-error', form: 'form' %}
         {%- endif -%}
 
-        {% render 'form-input-field', type: 'password', name: 'customer[password]', form: 'password', placeholder: 'customer.register.password', id: 'RegisterForm-password', aria_describedby: 'RegisterForm-password-error', autocomplete: 'family-name' %}
+        {% render 'form-input-field', type: 'password', name: 'customer[password]', form: 'password', placeholder: 'customer.register.password', id: 'RegisterForm-password', aria_describedby: 'RegisterForm-password-error' %}
 
         {%- if form.errors contains 'password' -%}
-            {% render 'form-field-error', name: 'password', id: 'RegisterForm-password-error' %}
+            {% render 'form-field-error', form_title: 'password', id: 'RegisterForm-password-error', form: 'form' %}
         {%- endif -%}
-        <button>
-            {{ 'customer.register.submit' | t }}
-        </button>
+
+        {% render 'form-button', button_title: 'customer.register.submit' %}
     {%- endform -%}
 </div>

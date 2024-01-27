@@ -1,4 +1,4 @@
 <span id="{{ id }}" class="form__message">
     {% render 'icon-error' %}
-    {{ form.errors.translated_fields[name] | capitalize }} {{ form.errors.messages[name] }}.
+    {{ form.errors.translated_fields[form_title] | capitalize }} {{ form.errors.messages[form_title] }}.
 </span>
