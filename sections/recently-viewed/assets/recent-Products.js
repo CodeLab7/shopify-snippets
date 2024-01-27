@@ -1,46 +1,40 @@
-// Recent Products JS
-
 function setRecentlyViewedProducts() {
+    const productData = window.Shopify.productData;
+    const productList = [productData];
+    const currProductPageTitle = productData.productTitle;
+    const productDataString = JSON.stringify(productList);
+    const localData = localStorage.getItem("recentlyViewedProduct");
+    const numberOfProducts = 4;
 
-  const productData = window.Shopify.productData;
-  const productList = [];
-  let jsonResp, jsonRespArr, jsonRespArrStr;
-  const numberOfProducts = 4;
-  productList.push(productData);
-  const currProductPageTitle = productData.productTitle;
-  const productDataString = JSON.stringify(productList);
-  const localData = localStorage.getItem("recentlyViewedProduct");
+    if (!localData) {
+        localStorage.setItem("recentlyViewedProduct", productDataString);
+    } else {
+        const oldProductData = JSON.parse(localData);
+        const countProductData = (oldProductData.match(/productTitle/g) || []).length;
+        const sameProduct = oldProductData.includes(currProductPageTitle);
+        let jsonRespArr;
 
-  if (localData === null) {
-    localStorage.setItem("recentlyViewedProduct", productDataString);
-  } else if (localData) {
-    const oldProductData = localStorage.getItem("recentlyViewedProduct");
-    const countProductData = (oldProductData.match(/productTitle/g) || []).length;
-    const sameProduct = oldProductData.includes(currProductPageTitle);
-    if (countProductData < numberOfProducts && sameProduct == false) {
-      jsonResp = JSON.parse(oldProductData);
-      jsonRespArr = jsonResp.concat(productList);
-      jsonRespArrStr = JSON.stringify(jsonRespArr);
-      localStorage.setItem("recentlyViewedProduct", jsonRespArrStr);
-    } else if (countProductData >= numberOfProducts && sameProduct == false) {
-      jsonResp = JSON.parse(oldProductData);
-      jsonResp.shift();
-      jsonRespArr = jsonResp.concat(productList);
-      jsonRespArr = JSON.stringify(jsonRespArr);
-      localStorage.setItem("recentlyViewedProduct", jsonRespArr);
+        if (countProductData < numberOfProducts && !sameProduct) {
+            jsonRespArr = [...oldProductData, ...productList];
+        } else if (countProductData >= numberOfProducts && !sameProduct) {
+            oldProductData.shift();
+            jsonRespArr = [...oldProductData, ...productList];
+        }
+
+        if (jsonRespArr) {
+            localStorage.setItem("recentlyViewedProduct", JSON.stringify(jsonRespArr));
+        }
     }
-  }
 }
-
 setRecentlyViewedProducts();
 
-const localViewed = localStorage.recentlyViewedProduct;
 function getRecentlyViewedProducts() {
-  const productData = JSON.parse(localStorage.getItem("recentlyViewedProduct"));
-  const recentlyViewedHtml = [];
-  productData.map(item => {
-    if (item.productTitle != '') {
-    recentlyViewedHtml.unshift(`
+    const productData = JSON.parse(localStorage.getItem("recentlyViewedProduct"));
+    const recentlyViewedHtml = [];
+
+    productData.forEach(item => {
+        if (item.productTitle) {
+            recentlyViewedHtml.unshift(`
     <li class="grid__item">
      <div class="card-wrapper">
         <div class="cart__inner_image">
@@ -67,17 +61,14 @@ function getRecentlyViewedProducts() {
        </div>
     </li>
    `);
-    };
-  });
-  const newProductData = `${recentlyViewedHtml.join("")}`;
-  
-  document.querySelectorAll('.recently-viewed').forEach( function (e) {
-      document.querySelectorAll('.recently-viewed').forEach( wishlistItem => {
-        wishlistItem.innerHTML = newProductData;
-      });
-  });
-}
+        }
+    });
 
-document.addEventListener("DOMContentLoaded", function (event) {
-  getRecentlyViewedProducts();
-});
+    const newProductData = `${recentlyViewedHtml.join("")}`;
+    const recentlyViewedElements = document.querySelectorAll('.recently-viewed');
+
+    recentlyViewedElements.forEach(wishlistItem => {
+        wishlistItem.innerHTML = newProductData;
+    });
+}
+document.addEventListener("DOMContentLoaded", getRecentlyViewedProducts);
