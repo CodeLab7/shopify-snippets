@@ -29,9 +29,11 @@
             {% render 'form-success-message' %}
         {%- endif -%}
         {%- form 'customer_login', novalidate: 'novalidate' -%}
-            {%- if form.errors -%}
-                {% render 'form-default-error', form: 'form' %}
-            {%- endif -%}
+            {% unless template.name == 'register' %}
+                {%- if form.errors -%}
+                    {% render 'form-default-error', form: 'form' %}
+                {%- endif -%}
+            {% endunless %}
 
             {% render 'form-input-field', type: 'email', name: 'customer[email]' , id: 'CustomerEmail', placeholder: 'customer.login_page.email', form_title: 'form', autocomplete: 'email', form: 'form' %}
 
@@ -66,23 +68,25 @@
 <div class="customer register container">
     {% render 'customer-page-title', title: 'customer.register.title' %}
     {%- form 'create_customer', novalidate: 'novalidate' -%}
-        {%- if form.errors -%}
-            {% render 'form-default-error', form: 'form' %}
-            <ul>
-                {%- for field in form.errors -%}
-                    <li>
-                        {%- if field == 'form' -%}
-                            {{ form.errors.messages[field] }}
-                        {%- else -%}
-                            <a href="#RegisterForm-{{ field }}">
-                                {{ form.errors.translated_fields[field] | capitalize }}
+        {% unless template.name == 'login' %}
+            {%- if form.errors -%}
+                {% render 'form-default-error', form: 'form' %}
+                <ul>
+                    {%- for field in form.errors -%}
+                        <li>
+                            {%- if field == 'form' -%}
                                 {{ form.errors.messages[field] }}
-                            </a>
-                        {%- endif -%}
-                    </li>
-                {%- endfor -%}
-            </ul>
-        {%- endif -%}
+                            {%- else -%}
+                                <a href="#RegisterForm-{{ field }}">
+                                    {{ form.errors.translated_fields[field] | capitalize }}
+                                    {{ form.errors.messages[field] }}
+                                </a>
+                            {%- endif -%}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            {%- endif -%}
+        {% endunless %}
 
         {% render 'form-input-field', type: 'text', name: 'customer[first_name]', value: form.first_name, placeholder: 'customer.register.first_name', id: 'RegisterForm-FirstName', autocomplete: 'given-name', form: 'form' %}
 
