@@ -21,4 +21,3 @@ This snippet will help you to show thumbnail images in featured product.
 }
  ```
 6. After this all, add featured product section in your theme from customization, and check if the thumbnail images are showing or not.
-7. 
